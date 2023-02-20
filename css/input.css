@@ -1,0 +1,57 @@
+/*custom font for text*/
+
+/*CSS file for fontawesome - an iconfont we will be using. This CSS file imported contains the font-face declaration. More info: http://fortawesome.github.io/Font-Awesome/ */
+
+
+
+
+
+th{
+    text-align: center;
+	background-color:#00aee8;
+	font-size :10pt ;
+	color :#ffffff ;
+
+	font-weight: bold;
+}
+
+@media (min-width: 700px) {
+	.logininput{
+		margin-top:10% ;
+		width: 200px ; 
+	}
+	.table-bordered{
+	margin-left: auto;
+	margin-right: auto;
+	width : 960px;
+    color: #666666;
+	}
+	.table-bordered-1{
+	margin-left: auto;
+	margin-right: auto;
+	width : 70%;
+    color: #666666;
+	}
+
+}
+
+
+@media (max-width: 700px) {
+	.logininput{
+		margin-top:1% ;
+		width: 100%;
+	}
+	.table-bordered{
+	margin-left: auto;
+	margin-right: auto;
+	width : 100%;
+    color: #666666;
+	}
+		.table-bordered-1{
+	margin-left: auto;
+	margin-right: auto;
+	width : 100%;
+    color: #666666;
+	}
+
+}
