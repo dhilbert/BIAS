@@ -18,26 +18,19 @@
 			<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 					<?php
 					$array = array(
-						array('홈','안전거래서비스')
+						array('홈','건축물 용도등의 확인')
 					);
 					breadcrumb($array);
 					?>
 			<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-primary">
-					<div class="panel-heading">안전거래서비스
+					<div class="panel-heading">건축물 용도등의 확인 레퍼런스
 					</div>
 
 					<div class="panel-body">
 
 
-
-
-
-Note That)					대지권비율은 집합건물만 존재!
-
-					
-		
 
 
 
@@ -49,10 +42,7 @@ Note That)					대지권비율은 집합건물만 존재!
 				
 								
 				$name="Num";hd_thead_th($num,$name);$num+=1;
-				$name="시뮬레이션명";hd_thead_th($num,$name);$num+=1;
-				$name="목적";hd_thead_th($num,$name);$num+=1;
-				
-				$name="바로가기";hd_thead_th($num,$name);$num+=1;
+				$name="URL ";hd_thead_th($num,$name);$num+=1;
 				$name="비고";hd_thead_th($num,$name);$num+=1;
 		
 				
@@ -71,26 +61,20 @@ Note That)					대지권비율은 집합건물만 존재!
 <?php
 
 	$temp_list = array(
-		array('1','04.물건표시','표시 물건에 대한 정보 확인','test0','case1) 전유부 있는 경우 + 대지권 비율 있음 '	),
-		array('2','04.물건표시','표시 물건에 대한 정보 확인','test1','case1) 전유부 있는 경우 + 대지권 비율 없음 '	),
-//		array('2','04.물건표시','표시 물건에 대한 정보 확인','test1','case2) 전유부 없는 경우  '	)
+		array('https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&csmSeq=1150&ccfNo=2&cciNo=1&cnpClsNo=1','','찾기쉬운 생활 법렬 정보'	),
 		
 
 	)	;			
 	for($total_num = 0 ; $total_num < count($temp_list) ; $total_num++){
 		
-		$num=0;
+		$num = 0;
 		echo "<tr>";
 			
-		$name = $temp_list[$total_num][$num] ;	hd_tbody_td($num,$name);$num+=1;
-			$name = $temp_list[$total_num][$num] ;	hd_tbody_td($num,$name);$num+=1;
-			$name = $temp_list[$total_num][$num] ;	hd_tbody_td($num,$name);$num+=1;
-
-			$name = "<a href='/BIAS/01_safeService/".$temp_list[$total_num][$num].".php'>테스트하기</a>					" ;	hd_tbody_td($num,$name);$num+=1;
-
+			$name = $total_num + 1				 ;	hd_tbody_td($num,$name);
+			$name = "<a href='".$temp_list[$total_num][$num]."' target='_blank'>".$temp_list[$total_num][2]."</a>		" ;	hd_tbody_td($num,$name);$num+=1;
 			$name = $temp_list[$total_num][$num] ;	hd_tbody_td($num,$name);$num+=1;
 
-
+			
 
 
 

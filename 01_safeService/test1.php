@@ -79,7 +79,7 @@
 		and REGEXP_REPLACE(b.hoNm, '[가-힣]', '') < 300
 		and b.dongNm !=a.bldNm
 		and b.mainAtchGbCd = 0
-		
+		and (a.etcPurps Like '%연립주택%' or a.etcPurps Like '%경비실%')
 		group by b.hoNm
 		Limit 1000
 		

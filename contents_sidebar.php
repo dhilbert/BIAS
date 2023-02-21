@@ -56,17 +56,25 @@ function hd_drop($num,$grobal,$sub_name,$sub_url){
 		<?php
 			$num		='hq-00';
 			$grobal		= '공공데이터포탈';
-			$sub_name	= array('소상공인시장진흥공단_상가(상권)','건축물대장(공사중)');
-			$sub_url	= array("/BIAS/00_api/00_main.php","#"			);	 					
+			$sub_name	= array('소상공인시장진흥공단_상가(상권)','토지임야대장','대지권등록정보조회서비스','건축물대장(공사중)');
+			$sub_url	= array("/BIAS/00_api/00_main.php","/BIAS/00_api/ladfrlList.php","/BIAS/00_api/01_main.php","#"			);	 					
 
 			hd_drop($num,$grobal,$sub_name,$sub_url);
 
 
-			$num		='hq-01';
+			$num		='hq-98';
 			$grobal		= '데이터 시뮬레이션';
 			$sub_name	= array('안전거래서비스');
 			$sub_url	= array("/BIAS/01_safeService/00_main.php");
 			hd_drop($num,$grobal,$sub_name,$sub_url);
+
+			$num		='hq-99';
+			$grobal		= '데이터적 용어 정의 ';
+			$sub_name	= array('건축물 용도 등의 확인','면적','대지권비율');
+			$sub_url	= array("/BIAS/99_def/def_000.php","/BIAS/99_def/def_001.php","/BIAS/99_def/def_002.php");
+			hd_drop($num,$grobal,$sub_name,$sub_url);
+
+
 
 			$num		='hq-02';
 			$grobal		= '데이터 확인';

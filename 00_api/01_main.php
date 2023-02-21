@@ -71,9 +71,8 @@
 <?php
 
 	$temp_list = array(
-		array('1','storeZoneOne','지정 상권조회','전국 약1200개 주요상권의 영역좌표를 조회하는 기능으로 지정된 상권번호에 해당하는 단일 상권정보를 조회한다.'	),
-		array('5','storeOne','단일 상가업소 조회','상가업소번호에 대한 업소정보를 조회		단일 업소정보를 출력이 필요한 경우를 위해 설계된 오퍼레이션'	),
-		array('9','storeListInPnu','상권내 상가업소 조회	','입력 상권번호에 해당하는 업소목록을 조회	'	),
+		array('1','ldaregList','국토교통부_대지권등록목록조회	','대지권이 설정된 토지의 건축물 정보 및 대지에 대한 권리비율, 대지권 말소 정보를 조회하는 기능	'	),
+		array('5','buldHoCoList','국토교통부_건물호수조회		','대지권이 설정된 토지의 건축물 정보 및 대지에 대한 권리비율, 대지권 말소 정보를 건물일련번호, 동명,층수,호수로 조회하는 기능	'	)
 
 
 	)	;			
@@ -88,7 +87,7 @@
 			$name = "<details>
 					<summary><자세히 보기></summary>".$temp_list[$total_num][$num]."</details>" ;	hd_tbody_td($num,$name);
 
-			$name = "<a href='/BIAS/00_api/00_api/".$temp_list[$total_num][1].".php'>확인하기</a>					" ;	hd_tbody_td($num,$name);
+			$name = "<a href='/BIAS/00_api/01_api/".$temp_list[$total_num][1].".php'>확인하기</a>					" ;	hd_tbody_td($num,$name);
 
 
 
