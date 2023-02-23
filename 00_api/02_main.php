@@ -18,14 +18,14 @@
 			<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 					<?php
 					$array = array(
-						array('홈','안전거래서비스')
+						array('홈','소상공인시장진흥공단_상가')
 					);
 					breadcrumb($array);
 					?>
 			<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-primary">
-					<div class="panel-heading">안전거래서비스
+					<div class="panel-heading">소상공인시장진흥공단_상가
 					</div>
 
 					<div class="panel-body">
@@ -34,9 +34,10 @@
 
 
 
-Note That)					대지권비율은 집합건물만 존재!
 
-					
+
+
+					url : https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15044713
 		
 
 
@@ -49,11 +50,10 @@ Note That)					대지권비율은 집합건물만 존재!
 				
 								
 				$name="Num";hd_thead_th($num,$name);$num+=1;
-				$name="시뮬레이션명";hd_thead_th($num,$name);$num+=1;
-				$name="목적";hd_thead_th($num,$name);$num+=1;
-				
+				$name="오퍼레이션명(영문)";hd_thead_th($num,$name);$num+=1;
+				$name="오퍼레이션명(한글)";hd_thead_th($num,$name);$num+=1;
+				$name="설명";hd_thead_th($num,$name);$num+=1;
 				$name="바로가기";hd_thead_th($num,$name);$num+=1;
-				$name="비고";hd_thead_th($num,$name);$num+=1;
 		
 				
 
@@ -70,15 +70,14 @@ Note That)					대지권비율은 집합건물만 존재!
 <tbody>
 <?php
 
+
+
+
 	$temp_list = array(
-		array('1','04.물건표시','표시 물건에 대한 정보 확인','test0','case1) 전유부 있는 경우 + 대지권 비율 있음 '	),
-		array('2','04.물건표시','표시 물건에 대한 정보 확인','test1','case2) 전유부 있는 경우 + 대지권 비율 없음, 대부분 연립 '	),
-		array('3','04.물건표시','표시 물건에 대한 정보 확인','test2','case3) 전유부 없음'	),
-		array('4','11.01.01.05.권리양수','주소로 상호 검색','test3',''	),
-		array('5','표준임대차>04.물건의 표시','표준 임대차 계약서 작성','test4','case1) 전유부 존재 , 미존재시 공적장부에서 불러올수 있는 데이터 없음'	),
+		array('3','getBrTitleInfo','건축물대장 표제부 조회	','전국 자치단체의 건축행정정보시스템(세움터)를 통해 생성된 건축물대장 표제부의 지번주소 및 새주소, 주/부속구분, 대지면적, 건축면적, 건폐율, 용적율, 구조, 용도, 지붕구조, 주차대수 등의 정보를 제공한다.	'	),
+		array('6','getBrExposPubuseAreaInfo','국토교통부_건축물대장 전유공용면적 조회	','전국 자치단체의 건축행정정보시스템(세움터)를 통해 생성된 건축물대장과 관련된 전유/공용면적의 층구분, 층번호, 전유/공용구분, 구조, 용도 등의 정보를 제공한다.	'	),
 		
-//		array('2','04.물건표시','표시 물건에 대한 정보 확인','test1','case2) 전유부 없는 경우  '	)
-		
+
 
 	)	;			
 	for($total_num = 0 ; $total_num < count($temp_list) ; $total_num++){
@@ -89,10 +88,12 @@ Note That)					대지권비율은 집합건물만 존재!
 		$name = $temp_list[$total_num][$num] ;	hd_tbody_td($num,$name);$num+=1;
 			$name = $temp_list[$total_num][$num] ;	hd_tbody_td($num,$name);$num+=1;
 			$name = $temp_list[$total_num][$num] ;	hd_tbody_td($num,$name);$num+=1;
+			$name = "<details>
+					<summary><자세히 보기></summary>".$temp_list[$total_num][$num]."</details>" ;	hd_tbody_td($num,$name);
 
-			$name = "<a href='/BIAS/01_safeService/".$temp_list[$total_num][$num].".php'>테스트하기</a>					" ;	hd_tbody_td($num,$name);$num+=1;
+			$name = "<a href='/BIAS/00_api/02_api/".$temp_list[$total_num][1].".php'>확인하기</a>					" ;	hd_tbody_td($num,$name);
 
-			$name = $temp_list[$total_num][$num] ;	hd_tbody_td($num,$name);$num+=1;
+
 
 
 

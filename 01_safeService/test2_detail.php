@@ -25,12 +25,9 @@ function hd_temps_test0($temps){
 
 
 	$dohocheck = array();
-	$sql	 = "select 
-	sigunguCd,bjdongCd,bun,ji,	REGEXP_REPLACE(dongNm, '[가-힣]', '') as dongNm,REGEXP_REPLACE(hoNm, '[가-힣]', '') as hoNm,platPlc,strctCdNm,mainPurpsCdNm,etcPurps,
-	dongNm as ddongNm,hoNm as hhoNm
+	$sql	 = "select 	*
 	
-	
-		from api_test_gun_5 
+		from api_test_gun_2
 		
 		
 		where idx = ".$idx.";";
@@ -41,8 +38,6 @@ function hd_temps_test0($temps){
 	$bjdongCd 	=  $main_info['bjdongCd'];
 	$bun 		=  $main_info['bun'];
 	$ji			=  $main_info['ji'];
-	$hoNm 		=  $main_info['hhoNm'];
-	$dongNm 	=  $main_info['ddongNm'];
 
 
 
@@ -58,7 +53,8 @@ function hd_temps_test0($temps){
 	$lndcgrCodeNm = $data_arr -> lndcgrCodeNm;
 	$lndpclAr = $data_arr -> lndpclAr;
 
-
+	/*
+	대지권 등록 조회 삭제
 	$numOfRows = 100;		$pageNo = 1;
 	$temp_hoNm = $main_info['hoNm'];
 	$serviceKey = 'ZRsZF%2FzuUlEALtEeik3hz8Pa14i1Ow3j1SegtsGoqdAGbSbA7PYNa%2Bx3Xse1Iy2DemohfDRE2pwOb6OT0P%2Fiow%3D%3D';
@@ -83,11 +79,8 @@ function hd_temps_test0($temps){
 		$ldaQotaRate = "<font color ='red'>대지권 정보 없음</font>";
 
 	}
-
 	
-	
-
-
+	전유부 면적 구하는 거 
 	$total_area =0;
 	$max_area = 0;
 		$area_sql	 = "
@@ -115,7 +108,7 @@ function hd_temps_test0($temps){
 			
 		}
 
-
+*/
 
 
 ?>
@@ -162,8 +155,6 @@ function hd_temps_test0($temps){
 						echo "읍면동코드 : ".$bjdongCd."<br>";
 						echo "번  : ".$bun."<br>";
 						echo "지  : ".$ji."<br>";
-						echo "동  : ".$dongNm."<br>";
-						echo "호  : ".$hoNm."<br>";
 						
 
 
@@ -200,7 +191,7 @@ function hd_temps_test0($temps){
 							<tbody>
 							<?php 
 
-								$temps = array('04.01','소재지', $main_info['platPlc']."  ".$dongNm."  ".$hoNm,'이실장 주소 규칙에 따름','','');
+								$temps = array('04.01','소재지', $main_info['platPlc'],'이실장 주소 규칙에 따름','','');
 								hd_temps_test0($temps);
 
 								$want_text = "pnu = sigunguCd+bjdongCd+1+bun+ji ";
@@ -214,35 +205,44 @@ function hd_temps_test0($temps){
 								hd_temps_test0($temps);
 
 
-								
+								/*
 								$temps = array('04.04','토지>대지권 종류','- ','','','등기부등본상에 표시, KMS 문의 필요');
 								hd_temps_test0($temps);
 
 								$temps = array('04.05','토지>대지권 비율',$ldaQotaRate,'대지권등록정보 조회','ldaQotaRate','');
 								hd_temps_test0($temps);	
 
-								
-								$temps = array('04.06','건물>구조',	$main_info['strctCdNm'],'건축물대장 > 전유부','strctCdNm','');
+								*/
+
+
+
+
+								$temps = array('04.06','건물>구조',	$main_info['strctCdNm'],'건축물대장 > 표제부','strctCdNm','');
 								hd_temps_test0($temps);	
 
-								$temps = array('04.07','건물>용도',	$main_info['mainPurpsCdNm'],'건축물대장 > 전유부','mainPurpsCdNm','');
+								$temps = array('04.07','건물>용도',	$main_info['mainPurpsCdNm'],'건축물대장 > 표제부','mainPurpsCdNm','');
 								hd_temps_test0($temps);	
 							
 
 								
-								$temps = array('04.07','건물>용도',	$main_info['etcPurps'],'건축물대장 > 전유부','etcPurps','');
+								$temps = array('04.07','건물>용도',	$main_info['etcPurps'],'건축물대장 > 표제부','etcPurps','');
 								
 	
 								hd_temps_test0($temps);	
 
+								$temps = array(' -','건물 > 면적(공급)','','','','건축물대장으로 산출 불가능');
+								hd_temps_test0($temps);									
 
-								
+								$temps = array(' -','건물 > 면적(전용)',''	,'','','건축물대장으로 산출 불가능');
+								hd_temps_test0($temps);									
+
+								/*
 								$temps = array(' -','건물 > 면적(공급)',	$total_area,'건축물대장 > 전유부','area 값의 합','');
 								hd_temps_test0($temps);									
 
 								$temps = array(' -','건물 > 면적(전용)',$max_area 	,'건축물대장 > 전유부','Max(area)','');
 								hd_temps_test0($temps);									
-
+*/
 							?>
 							</tbody>
 					</table>							

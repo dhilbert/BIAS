@@ -45,7 +45,52 @@ function hd_temps_test0($temps){
 	$dongNm 	=  $main_info['ddongNm'];
 
 
+	$total_area =0;
+	$max_area = 0;
+	$etc_area = 0;
+		$area_sql	 = "
+		SELECT area,mainAtchGbCd
+		from api_test_gun_5		
+		where sigunguCd = '".$sigunguCd."'
+		and bjdongCd = '".$bjdongCd."'
+		and bun = '".$bun."'
+		and ji = '".$ji."'
+		and hoNm = '".$hoNm."'
+		and dongNm = '".$dongNm."';";
+		
 
+		$area_res	=  mysqli_query($real_sock,$area_sql) or die(mysqli_error($real_sock));
+		while($area_info	 = mysqli_fetch_array($area_res)){
+			if($area_info['mainAtchGbCd']==0){
+				$total_area +=$area_info['area'];
+				if($area_info['area']>$max_area){
+					$max_area = $area_info['area'];
+				}
+				else{
+					$max_area = $max_area;
+				}
+			}
+			else{
+				$etc_area += $area_info['area'];
+
+			}
+		}
+
+
+/*
+
+"공급면적":"191.97",
+"공급유형":"외인임대",
+"광역시도코드":"11",
+"단지명":"용산외인",
+"상세주소":"118  (용산우체국) 사서함 15호",
+"세대수":"18",
+"시군구코드":"11170",
+"주소":"서울특별시 용산구 한강대로",
+"준공일자":"",
+"형명":"191.97"
+}
+https://api.odcloud.kr/api/15050700/v1/uddi:79894755-6190-4b4f-b9ac-d17b44504d97?page=1&perPage=10
 
 
 	// 토지 임야 대장!!!
@@ -88,34 +133,9 @@ function hd_temps_test0($temps){
 	
 
 
-	$total_area =0;
-	$max_area = 0;
-		$area_sql	 = "
-		SELECT area,mainAtchGbCd
-		from api_test_gun_5		
-		where sigunguCd = '".$sigunguCd."'
-		and bjdongCd = '".$bjdongCd."'
-		and bun = '".$bun."'
-		and ji = '".$ji."'
-		and hoNm = '".$hoNm."'
-		and dongNm = '".$dongNm."';";
-		
-
-		$area_res	=  mysqli_query($real_sock,$area_sql) or die(mysqli_error($real_sock));
-		while($area_info	 = mysqli_fetch_array($area_res)){
-			if($area_info['mainAtchGbCd']==0){
-				$total_area +=$area_info['area'];
-				if($area_info['area']>$max_area){
-					$max_area = $area_info['area'];
-				}
-				else{
-					$max_area = $max_area;
-				}
-			}
-			
 		}
 
-
+*/
 
 
 ?>
@@ -157,7 +177,7 @@ function hd_temps_test0($temps){
 
 
 
-						echo "PNU : ".$pnu."<br>";
+
 						echo "시군구코드: ".$sigunguCd."<br>";
 						echo "읍면동코드 : ".$bjdongCd."<br>";
 						echo "번  : ".$bun."<br>";
@@ -203,6 +223,24 @@ function hd_temps_test0($temps){
 								$temps = array('04.01','소재지', $main_info['platPlc']."  ".$dongNm."  ".$hoNm,'이실장 주소 규칙에 따름','','');
 								hd_temps_test0($temps);
 
+
+								$temps = array(' -','면적 > 주거 전용 면적',$max_area 	,'건축물대장 > 전유부','Max(area)','');
+								hd_temps_test0($temps);	
+
+								
+								$temps = array(' -','면적 > 주거 공용 면적',	$total_area,'건축물대장 > 전유부','area 값의 합','mainAtchGbCd=0 의 area 값');
+								hd_temps_test0($temps);									
+
+								$temps = array(' -','면적 > 그밖의 공용면적(주차장 면적을 포함한)',	$etc_area,'건축물대장 > 전유부','area 값의 합','mainAtchGbCd!=0 의 area 값');
+								hd_temps_test0($temps);									
+
+								$temps = array(' -','합계',	$etc_area + $total_area ,'건축물대장 > 전유부','area 값의 합','mainAtchGbCd!=0 의 area 값');
+								hd_temps_test0($temps);									
+
+								
+
+
+								/*
 								$want_text = "pnu = sigunguCd+bjdongCd+1+bun+ji ";
 								
 								
@@ -235,13 +273,8 @@ function hd_temps_test0($temps){
 	
 								hd_temps_test0($temps);	
 
-
-								
-								$temps = array(' -','건물 > 면적(공급)',	$total_area,'건축물대장 > 전유부','area 값의 합','');
-								hd_temps_test0($temps);									
-
-								$temps = array(' -','건물 > 면적(전용)',$max_area 	,'건축물대장 > 전유부','Max(area)','');
-								hd_temps_test0($temps);									
+	
+								*/							
 
 							?>
 							</tbody>

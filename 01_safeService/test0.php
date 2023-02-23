@@ -80,6 +80,10 @@
 		and b.dongNm !=a.bldNm
 		and b.mainAtchGbCd = 0
 		
+		and (a.etcPurps Like '%아파트%' or a.etcPurps Like '%빌라%'  or a.etcPurps Like '%도시형생활주택%' )
+		and (a.etcPurps not Like '%관리실%' )
+
+		
 		group by b.hoNm
 		Limit 1000
 		

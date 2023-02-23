@@ -37,8 +37,7 @@
 
 
 
-					url : https://www.data.go.kr/iim/api/selectAPIAcountView.do
-		
+					url : https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15012005
 
 
 

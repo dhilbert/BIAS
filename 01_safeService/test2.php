@@ -37,12 +37,10 @@
 
 
 
-				$names_array = array("대지위치","동","호","빌딩명","시군구코드",	"법정동코드",	"대지구분코드","번","지",'주용도코드명','기타용도','이동'				)	;
+				$names_array = array("대지위치","빌딩명","시군구코드",	"법정동코드",	"대지구분코드","번","지",'주용도코드명','기타용도','이동'				)	;
 				$num=0;
 				
 										
-				$name=$names_array[$num];hd_thead_th($num,$name);$num+=1;
-				$name=$names_array[$num];hd_thead_th($num,$name);$num+=1;
 				$name=$names_array[$num];hd_thead_th($num,$name);$num+=1;
 				$name=$names_array[$num];hd_thead_th($num,$name);$num+=1;
 				$name=$names_array[$num];hd_thead_th($num,$name);$num+=1;
@@ -66,23 +64,17 @@
 		$temp_kind = array('대지','산','블록');
 		$sql	 = "
 		
-		SELECT a.sigunguCd,a.platPlc,a.bldNm,a.platGbCd,a.bjdongCd,a.bun,a.ji,a.mainPurpsCdNm,a.etcPurps,	b.idx,
+		SELECT a.sigunguCd,a.platPlc,a.bldNm,a.platGbCd,a.bjdongCd,a.bun,a.ji,a.mainPurpsCdNm,a.etcPurps,a.idx
 
-		b.dongNm,b.hoNm
+		
 			from api_test_gun_2 AS a
-				JOIN api_test_gun_5 AS b
+				 lEFT JOIN api_test_gun_5 AS b
 			ON a.sigunguCd = b.sigunguCd
 			AND a.bjdongCd = b.bjdongCd
 			and a.bun =b.bun
 			and a.ji = b.ji 
-		where 		REGEXP_REPLACE(b.dongNm, '[가-힣]', '') >0
-		and REGEXP_REPLACE(b.hoNm, '[가-힣]', '') < 300
-		and b.dongNm !=a.bldNm
-		and b.mainAtchGbCd = 0
-		and (a.etcPurps Like '%연립주택%'  )
-
-		
-		group by b.hoNm
+		where 		b.idx is null
+		and a.etcPurps Like '%단독%'
 		Limit 1000
 		
 		;";
@@ -93,24 +85,18 @@
 
 			$num = 0;
 			$name = $info['platPlc'] ;	hd_tbody_td($num,$name);$num+=1;
-			$name = $info['dongNm'] ;	hd_tbody_td($num,$name);$num+=1;
-			$name = $info['hoNm'] ;	hd_tbody_td($num,$name);$num+=1;
+			
 
 
 			$name = $info['bldNm'] ;	hd_tbody_td($num,$name);$num+=1;
 			$name = $info['sigunguCd'] ;	hd_tbody_td($num,$name);$num+=1;
 			$name = $info['bjdongCd'] ;	hd_tbody_td($num,$name);$num+=1;
 			$name = $temp_kind[$info['platGbCd']] ;	hd_tbody_td($num,$name);$num+=1;
-
-
 			$name = $info['bun'] ;	hd_tbody_td($num,$name);$num+=1;
 			$name = $info['ji'] ;	hd_tbody_td($num,$name);$num+=1;
 			$name = $info['mainPurpsCdNm'] ;	hd_tbody_td($num,$name);$num+=1;
-			$name = $info['etcPurps'] ;	hd_tbody_td($num,$name);$num+=1;
-
-
-			
-			$name = "<a href = 'test0_detail.php?idx=".$info['idx']."'>상세정보</a>" ;	hd_tbody_td($num,$name);
+			$name = $info['etcPurps'] ;	hd_tbody_td($num,$name);$num+=1;			
+			$name = "<a href = 'test2_detail.php?idx=".$info['idx']."'>상세정보</a>" ;	hd_tbody_td($num,$name);
 				
 			echo "</tr>";
 		}

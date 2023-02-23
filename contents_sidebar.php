@@ -56,8 +56,9 @@ function hd_drop($num,$grobal,$sub_name,$sub_url){
 		<?php
 			$num		='hq-00';
 			$grobal		= '공공데이터포탈';
-			$sub_name	= array('소상공인시장진흥공단_상가(상권)','토지임야대장','대지권등록정보조회서비스','건축물대장(공사중)');
-			$sub_url	= array("/BIAS/00_api/00_main.php","/BIAS/00_api/ladfrlList.php","/BIAS/00_api/01_main.php","#"			);	 					
+			$sub_name	= array('소상공인시장진흥공단_상가(상권)','토지임야대장','대지권등록정보조회서비스','건축물대장');
+			$sub_url	= array("/BIAS/00_api/00_main.php","/BIAS/00_api/ladfrlList.php"
+			,"/BIAS/00_api/01_main.php","/BIAS/00_api/02_main.php"			);	 					
 
 			hd_drop($num,$grobal,$sub_name,$sub_url);
 

@@ -33,17 +33,17 @@
 			<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-primary">
-					<div class="panel-heading">면적
+					<div class="panel-heading">1. 전용 면적 / 공용 면적 / 그 밖의 면적
 					</div>
 
 					<div class="panel-body">
-						1. 전용 면적 / 공용 면적 <br>
+					
 						조건 : 건축물 대장 전유부 존재 <br>
 						계산식 : (공급 면적)전유부의 주용도가(mainPurpsCd ) 주 건축물(0)인 행의 area 값의 합 <br>
 						         (전용면적)전유부의 주용도가(mainPurpsCd ) 주 건축물(0)인 행의 area 값중 가장 큰값<br>
-								 ※ etcPurps 값으로 찾아야 하는데, 전용 면적은 계단실,벽체, 승강기, 홀등의 정보가 들아가지 않으므로, 가장 큰 값을 전용 면적으로 봐도 무관!!
+								 ※ etcPurps 값으로 찾아야 하는데, 전용 면적은 계단실,벽체, 승강기, 홀등의 정보가 들아가지 않으므로, 가장 큰 값을 전용 면적으로 봐도 무관!!<br>
 
-
+								 (그밖의 면적)전유부의 주용도가(mainPurpsCd ) 주 건축물(0)이 아닌 행의 area 값의 합 <br>
 
 						
 <table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
@@ -168,9 +168,9 @@
 
 ?>
 
-</tbody>
+	</tbody>
 </table>	
-
+<h2> 전용 / 공용 면적</H2>
 			
 <table border =1>
 	<thead>
@@ -185,6 +185,7 @@
 		
 		$total_area =0;
 		$max_area = 0;
+		$etc_area = 0;
 		if($idx != Null){
 			$sub_sql	 = "
 				
@@ -212,7 +213,7 @@
 				echo "</tr>";
 
 				if($sub_info['mainAtchGbCd']==0){
-					$total_area +=$sub_info['area'];
+					$total_area += $sub_info['area'];
 					if($sub_info['area']>$max_area){
 						$max_area = $sub_info['area'];
 					}
@@ -220,24 +221,59 @@
 						$max_area = $max_area;
 					}
 				}
+				else{
+					$etc_area += $sub_info['area'];
+
+				}
 				
 			}
-
+		}
 		
 	?>
 
 	</tbody>
 </table>
+
 <?php 
 	echo "공급 면적 : ".$total_area;
 	echo "<br>전용 면적 : ".$max_area;
-}
+	echo "<br>그밖의 면적: ".$etc_area;
+	
 ?>
 
 
 
 
 
+
+
+
+
+
+
+</div>
+
+				</div>
+			</div>
+
+
+
+
+
+			<div class="col-md-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">2. 분양 면적 / 전용 면적 
+					</div>
+
+					<div class="panel-body">
+
+
+
+
+
+
+ - 분양전의 매물 상태 <br>
+ - 전용 면적 = 전용면적, 공용면적 = 분양 면적
 
 
 

@@ -79,7 +79,9 @@
 		and REGEXP_REPLACE(b.hoNm, '[가-힣]', '') < 300
 		and b.dongNm !=a.bldNm
 		and b.mainAtchGbCd = 0
-		and (a.etcPurps Like '%연립주택%'  )
+		
+		and (a.etcPurps Like '%아파트%' or a.etcPurps Like '%빌라%'  or a.etcPurps Like '%도시형생활주택%' )
+		and (a.etcPurps not Like '%관리실%' )
 
 		
 		group by b.hoNm
@@ -110,7 +112,7 @@
 
 
 			
-			$name = "<a href = 'test0_detail.php?idx=".$info['idx']."'>상세정보</a>" ;	hd_tbody_td($num,$name);
+			$name = "<a href = 'test4_detail.php?idx=".$info['idx']."'>상세정보</a>" ;	hd_tbody_td($num,$name);
 				
 			echo "</tr>";
 		}
