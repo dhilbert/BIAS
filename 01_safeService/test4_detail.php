@@ -90,8 +90,8 @@ function hd_temps_test0($temps){
 "준공일자":"",
 "형명":"191.97"
 }
-https://api.odcloud.kr/api/15050700/v1/uddi:79894755-6190-4b4f-b9ac-d17b44504d97?page=1&perPage=10
-
+https://api.odcloud.kr/api/15050700/v1/uddi:79894755-6190-4b4f-b9ac-d17b44504d97?page=1&perPage=10&returnType=json&serviceKey=ZRsZF%2FzuUlEALtEeik3hz8Pa14i1Ow3j1SegtsGoqdAGbSbA7PYNa%2Bx3Xse1Iy2DemohfDRE2pwOb6OT0P%2Fiow%3D%3D
+https://api.odcloud.kr/api/15050700/v1/uddi:18383ead-653a-41dd-9c3b-b406c4a06ea3?page=1&perPage=1
 
 	// 토지 임야 대장!!!
 	$pnu = $main_info['sigunguCd'].$main_info['bjdongCd']."1".$main_info['bun'].$main_info['ji'];
